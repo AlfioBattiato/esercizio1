@@ -32,11 +32,13 @@ $array = array(
     "frontend" => ["luca", "duilio", "marco"],
     "backend" => ["alfio", "stefano", "rick"],
 );
+$nomisquadre=[
+    "team1",
+    "team2"
+];
 $match = array(
     "match1" =>  [$array["frontend"], $array["backend"]]
 );
-
-
 ?>
 <!-- html start -->
 <!DOCTYPE html>
@@ -51,7 +53,6 @@ $match = array(
 <body>
     <h3>
         <?php
-
         echo "<h3>esercizio 1</h3></br>$giorno_settimana, $giorno $mese $anno</br>"
         ?>
     </h3>
@@ -62,7 +63,7 @@ $match = array(
         <ul>
 
             <?php foreach ($array as $key => $value) { ?>
-                <?php echo "<li>$key</li>"; ?>
+                <li><?php echo $key; ?></li>
                 <ul>
                     <?php
                     foreach ($value as $val) {
@@ -80,22 +81,18 @@ $match = array(
             <?php foreach ($match as $key => $value) { ?>
                 <li><?php echo $key; ?>
                     <ul>
-                        <?php foreach ($value[0] as $sub_value) { ?>
-                            <li><?php echo $sub_value; ?></li>
-                        <?php } ?>
-                    </ul>
-                    <ul>
-                        <?php foreach ($value[1] as $sub_value) { ?>
-                            <li><?php echo $sub_value; ?></li>
-                        <?php } ?>
+                        <?php foreach ($value as $index => $valore) {
+                            $teamName = $nomisquadre[$index];
+                            echo "<h4>$teamName</h4>"; 
+                            foreach ($valore as $nomi) {
+                                echo "<li>$nomi</li>";
+                            }
+                        } ?>
                     </ul>
                 </li>
             <?php } ?>
         </ul>
     </h3>
-
-
-
 </body>
 
 </html>
